@@ -1,4 +1,4 @@
-name: Security Check #2: Nuclei Basic
+name: Security Check 2 - Nuclei Basic
 
 on: push
 
