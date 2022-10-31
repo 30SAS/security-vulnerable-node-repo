@@ -4,15 +4,17 @@ on: push
 
 jobs:
   nuclei-scan:
-    permissions: write-all
+    permissions: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Nuclei - Vulnerability Scan
-        uses: projectdiscovery/nuclei-action@main
+        uses: projectdiscovery/nuclei-action@main        
         with:
-          target: https://api.dev.treinta.co
+          github-report: true
+          github-token: ${{ secrets.NUCLEI_GH_TOKEN }}        
+          target: https://login.dev.treinta.co/
 
       - name: GitHub Workflow artifacts
         uses: actions/upload-artifact@v2
