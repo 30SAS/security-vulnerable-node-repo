@@ -4,6 +4,7 @@ on: push
 
 jobs:
   nuclei-scan:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
