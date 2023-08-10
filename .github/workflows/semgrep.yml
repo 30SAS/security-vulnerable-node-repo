@@ -33,11 +33,11 @@ jobs:
       - uses: actions/checkout@v3
       # Run the "semgrep ci" command on the command line of the docker image.
       - run: semgrep ci --no-autofix --output findings.sarif --sarif
-        #env:
+        env:
           # Connect to Semgrep Cloud Platform through your SEMGREP_APP_TOKEN.
           # Generate a token from Semgrep Cloud Platform > Settings
           # and add it to your GitHub secrets.
-          # SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
       # Pick semgrep output and store it as artifact
       - name: Process SARIF file
         # You may pin to the exact commit or the version.
