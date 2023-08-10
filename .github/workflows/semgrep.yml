@@ -32,15 +32,9 @@ jobs:
       # Fetch project source with GitHub Actions Checkout.
       - uses: actions/checkout@v3
       # Run the "semgrep ci" command on the command line of the docker image.
-      - run: semgrep ci --exclude='*.spect.ts' --exclude='public/js/*.js' --config "p/default" --config "p/nextjs" --config "p/eslint" --no-autofix --output findings.txt --metrics=off || true
+      - run: semgrep ci --exclude='*.spect.ts' --exclude='public/js/*.js' --config "p/default" --config "p/nextjs" --config "p/eslint" --no-autofix --force-color --metrics=off || true
         env:
           # Connect to Semgrep Cloud Platform through your SEMGREP_APP_TOKEN.
           # Generate a token from Semgrep Cloud Platform > Settings
           # and add it to your GitHub secrets.
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-      - name: Archive semgrep ouput as artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: semgrep-scan-results
-          path: |
-            findings.txt             
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}             
